@@ -1,6 +1,8 @@
 import { hasParam, isParam, getValue, formatValidator } from './helpers'
 
-export const get = ({ schema, values }) => path => {
+export const get = ({ schema, values }): ((path: string) => {}) => (
+  path
+): string => {
   if (!hasParam(schema, path)) throw new Error(`Cannot find param '${path}'`)
   if (!isParam(schema, path))
     throw new Error(

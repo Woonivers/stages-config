@@ -1,7 +1,7 @@
 import * as _ from 'lodash/fp'
 import * as validator from 'validator'
 
-export default (format, value) => {
+export default (format, value): { isValid: boolean; error?: string } => {
   if (format === '*') return { isValid: true }
   if (format === 'string')
     return { isValid: _.isString(value), error: '- must be string' }
@@ -11,6 +11,7 @@ export default (format, value) => {
     return { isValid: validator.isEmail(value), error: '- must be a email' }
   if (format === 'url')
     return {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       isValid: validator.isURL(value, { require_tld: false }),
       error: '- must be a url'
     }

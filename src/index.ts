@@ -1,9 +1,12 @@
 import * as _ from 'lodash/fp'
 import { get } from './methods'
 
-const getStageValues = ({ stage, stages }) => {
-  const stageKey = get({ schema: { stage }, values: {} })('stage')
-  if (!stageKey) throw new Error(`Any stage provived`)
+const getStageValues = ({
+  stage,
+  stages
+}): { values: object; stageKey: string } => {
+  const stageKey = get({ schema: { stage }, values: {} })('stage') as string
+  if (!stageKey) throw new Error(`Any stage provided`)
   if (!_.hasIn(stageKey, stages)) throw new Error(`No stage`)
   return { values: stages[stageKey], stageKey }
 }
