@@ -6,15 +6,18 @@
     "type": "git",
     "url": "https://github.com/Woonivers/stages-config.git"
   },
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "files": ["lib/"],
+  "main": "build/index.js",
+  "typings": "build/types/index.d.ts",
+  "files": ["build/"],
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch --notify",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
-    "build": "rm -rf lib && tsc -p .",
-    "prepublishOnly": "npm run build"
+    "ci:build": "rm -rf build && tsc",
+    "ci:test": "yarn lint && yarn test --maxWorkers=2",
+    "ci:publish": "yarn semantic-release",
+    "semantic-release": "semantic-release"
   },
   "keywords": ["stages", "config-module"],
   "author": "Jorge Marrero",
@@ -36,6 +39,8 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
     "@types/jest": "^24.0.9",
     "@types/lodash": "^4.14.121",
     "@types/node": "^11.10.4",
@@ -51,9 +56,27 @@
     "jest": "^24.1.0",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
+    "semantic-release": "^15.13.3",
     "ts-jest": "^24.0.0",
     "ts-node": "^8.0.2",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "^22.0.0"
+  },
+  "release": {
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
