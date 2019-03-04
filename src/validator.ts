@@ -15,6 +15,10 @@ export default (format, value): { isValid: boolean; error?: string } => {
       isValid: validator.isURL(value, { require_tld: false }),
       error: '- must be a url'
     }
+  if (format === 'uuid')
+    return {
+      isValid: validator.isUUID('4')
+    }
   return {
     isValid: false,
     error: '- format associated not supported, use a custom validator'
