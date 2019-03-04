@@ -91,6 +91,7 @@ workflows:
             - setup
       - build:
           requires:
+            - test
             - setup
       - publish:
           requires:
