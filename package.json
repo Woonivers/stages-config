@@ -27,7 +27,7 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.ts": ["prettier --write", "tslint --fix", "git add"],
+    "*.ts": ["prettier --write", "eslint --fix", "git add"],
     "*.md": ["prettier --write", "git add"],
     "*.json": ["prettier --write", "git add"]
   },

@@ -7,7 +7,8 @@ const getStageValues = ({
 }): { values: object; stageKey: string } => {
   const stageKey = get({ schema: { stage }, values: {} })('stage') as string
   if (!stageKey) throw new Error(`Any stage provided`)
-  if (!_.hasIn(stageKey, stages)) throw new Error(`No stage`)
+  if (!_.hasIn(stageKey, stages))
+    throw new Error(`No stage found for "${stageKey}"`)
   return { values: stages[stageKey], stageKey }
 }
 
