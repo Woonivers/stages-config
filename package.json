@@ -14,7 +14,7 @@
     "test:watch": "jest --watch --notify",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
-    "ci:build": "rm -rf build && tsc",
+    "build": "rm -rf build && tsc",
     "ci:test": "yarn lint && yarn test --maxWorkers=2",
     "ci:publish": "yarn semantic-release",
     "semantic-release": "semantic-release"
