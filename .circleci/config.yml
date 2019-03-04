@@ -86,7 +86,7 @@ workflows:
   test_and_release:
     jobs:
       - setup
-      - test:
+      - tests:
           requires:
             - setup
       - build:
