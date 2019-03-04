@@ -1,6 +1,6 @@
 {
   "name": "@woonivers/stages-config",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Easy environment by stages",
   "repository": {
     "type": "git",
@@ -8,7 +8,9 @@
   },
   "main": "build/index.js",
   "typings": "build/types/index.d.ts",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --notify",
@@ -19,7 +21,10 @@
     "ci:publish": "yarn semantic-release",
     "semantic-release": "semantic-release"
   },
-  "keywords": ["stages", "config-module"],
+  "keywords": [
+    "stages",
+    "config-module"
+  ],
   "author": "Jorge Marrero",
   "license": "MIT",
   "jest": {
@@ -27,9 +32,19 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.ts": ["prettier --write", "eslint --fix", "git add"],
-    "*.md": ["prettier --write", "git add"],
-    "*.json": ["prettier --write", "git add"]
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "eslint-import-resolver-typescript": "^1.1.1",
@@ -68,7 +83,11 @@
       "@semantic-release/npm",
       {
         "path": "@semantic-release/git",
-        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+        "assets": [
+          "package.json",
+          "package-lock.json",
+          "CHANGELOG.md"
+        ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
