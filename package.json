@@ -28,7 +28,6 @@
   },
   "lint-staged": {
     "*.ts": ["prettier --write", "eslint --fix", "git add"],
-    "*.md": ["prettier --write", "git add"],
     "*.json": ["prettier --write", "git add"]
   },
   "dependencies": {
